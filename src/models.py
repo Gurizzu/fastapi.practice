@@ -1,5 +1,4 @@
 
-from tkinter import CASCADE
 from .database import Base
 from sqlalchemy import Column,Integer,String, ForeignKey
 from sqlalchemy.sql.expression import text
@@ -15,7 +14,7 @@ class Post(Base):
     content = Column(String,nullable=False)
     rating = Column(Integer,nullable=True, server_default='0')
     created_at = Column(TIMESTAMP(timezone=True),nullable=False,server_default=text('NOW()'))
-    owner_id = Column(Integer,ForeignKey("users.id",ondelete=CASCADE),nullable=False)
+    owner_id = Column(Integer,ForeignKey("users.id",ondelete="CASCADE"),nullable=False)
     
     owner = relationship("User")
     
@@ -32,5 +31,5 @@ class User(Base):
 class Vote(Base):
     __tablename__ = "votes"
     
-    user_id = Column(Integer,ForeignKey("users.id",ondelete=CASCADE),primary_key=True)
-    post_id = Column(Integer,ForeignKey("post.id",ondelete=CASCADE),primary_key=True)
+    user_id = Column(Integer,ForeignKey("users.id",ondelete="CASCADE"),primary_key=True)
+    post_id = Column(Integer,ForeignKey("post.id",ondelete="CASCADE"),primary_key=True)
