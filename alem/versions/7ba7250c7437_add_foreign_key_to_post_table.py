@@ -5,7 +5,6 @@ Revises: 913c2d019b9a
 Create Date: 2022-09-22 11:49:26.509443
 
 """
-from tkinter import CASCADE
 from alembic import op
 import sqlalchemy as sa
 
